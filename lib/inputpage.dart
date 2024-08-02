@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:bmi/IconContent.dart';
+import 'package:bmi/iconButton.dart';
 import 'package:bmi/resuseableCards.dart';
 import 'package:flutter/material.dart';
 import 'constant.dart';
@@ -19,6 +20,9 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   gender? selectedGender;
+  int height = 150;
+  int weight = 50;
+  int age = 25;
   // Color maleCardColor = inactiveCardColor;
   // Color femaleCardColor = inactiveCardColor;
   // void updateColor(gender selectedGender) {
@@ -107,12 +111,28 @@ class _InputPageState extends State<InputPage> {
                       textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
-                          '180',
+                          height.toString(),
                           style: numberStyle,
                         ),
-                        Text('cm',style: textStyle,)
+                        Text(
+                          'cm',
+                          style: textStyle,
+                        )
                       ],
                     ),
+                    Slider(
+                        value: height.toDouble(),
+                        min: 100,
+                        max: 250,
+                        // divisions: 4,
+                        // label: height.round().toString(),
+                        activeColor: Color(0xffeb1555),
+                        inactiveColor: Color(0xff8d8e98),
+                        onChanged: (double value) {
+                          setState(() {
+                            height = value.round();
+                          });
+                        })
                   ],
                 ),
               ),
@@ -123,11 +143,69 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: mycontainer(
                     color: activeCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'WEIGHT',
+                          style: textStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: numberStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                           iconbtn(icon: Icons.add,onPress: () {
+                             setState(() {
+                               weight++;
+                             });
+                           },),
+                           iconbtn(icon: Icons.remove,onPress: () {
+                             setState(() {
+                               weight--;
+                             });
+                           },),
+                          //  IconButton(onPressed: (){}, icon: Icon(Icons.remove)),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: mycontainer(
                     color: activeCardColor,
+                     cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'AGE',
+                          style: textStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: numberStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                           iconbtn(icon: Icons.add,onPress: () {
+                             setState(() {
+                               age++;
+                             });
+                           },),
+                           iconbtn(icon: Icons.remove,onPress: () {
+                             setState(() {
+                               age--;
+                             });
+                           },),
+                          //  IconButton(onPressed: (){}, icon: Icon(Icons.remove)),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
