@@ -4,24 +4,21 @@ import 'package:bmi/IconContent.dart';
 import 'package:bmi/resuseableCards.dart';
 import 'package:flutter/material.dart';
 import 'constant.dart';
+
 enum gender {
   male,
   female,
 }
 
 class InputPage extends StatefulWidget {
-  
   const InputPage({super.key});
 
   @override
   State<InputPage> createState() => _InputPageState();
 }
 
-
 class _InputPageState extends State<InputPage> {
-
- 
- gender? selectedGender;
+  gender? selectedGender;
   // Color maleCardColor = inactiveCardColor;
   // Color femaleCardColor = inactiveCardColor;
   // void updateColor(gender selectedGender) {
@@ -46,7 +43,6 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
         appBar: AppBar(
           title: Center(
@@ -65,12 +61,14 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: mycontainer(
-                     onPress: () {
-                      setState(() {
-                        selectedGender = gender.male;
-                      });
-                    },
-                      color: selectedGender == gender.male ? activeCardColor : inactiveCardColor,
+                      onPress: () {
+                        setState(() {
+                          selectedGender = gender.male;
+                        });
+                      },
+                      color: selectedGender == gender.male
+                          ? activeCardColor
+                          : inactiveCardColor,
                       cardChild: Iconcontent(
                         icon: Icons.male,
                         text: 'Male',
@@ -78,12 +76,14 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: mycontainer(
-                    onPress: () {
-                      setState(() {
-                        selectedGender = gender.female;
-                      });
-                    },
-                      color: selectedGender == gender.female ? activeCardColor : inactiveCardColor,
+                      onPress: () {
+                        setState(() {
+                          selectedGender = gender.female;
+                        });
+                      },
+                      color: selectedGender == gender.female
+                          ? activeCardColor
+                          : inactiveCardColor,
                       cardChild: Iconcontent(
                         icon: Icons.female,
                         text: 'Female',
@@ -94,9 +94,27 @@ class _InputPageState extends State<InputPage> {
             Expanded(
               child: mycontainer(
                 color: activeCardColor,
-                cardChild: Column(children: [
-                  Text('Height',style: textStyle,)
-                ],),
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Height',
+                      style: textStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          '180',
+                          style: numberStyle,
+                        ),
+                        Text('cm',style: textStyle,)
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -105,13 +123,11 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: mycontainer(
                     color: activeCardColor,
-                    
                   ),
                 ),
                 Expanded(
                   child: mycontainer(
                     color: activeCardColor,
-                    
                   ),
                 ),
               ],
