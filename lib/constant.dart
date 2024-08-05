@@ -1,3 +1,6 @@
+import 'package:bmi/screen0.dart';
+import 'package:bmi/screen1.dart';
+import 'package:bmi/screen2.dart';
 import 'package:flutter/material.dart';
 
 double BottomNavigationBarHeight = 60;
@@ -10,3 +13,10 @@ const textStyle =
 
 const numberStyle =
     TextStyle(fontSize: 50, fontWeight: FontWeight.w900, color: Colors.white);
+var rou =  {
+        '/': (context) => Screen0(),
+        '/first': (context) => Screen1(),
+        '/second': (context) => Screen2(),
+      };
+
+const BottomNavigationBarText = TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white);

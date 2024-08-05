@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:bmi/IconContent.dart';
+import 'package:bmi/ResultPage.dart';
 import 'package:bmi/iconButton.dart';
 import 'package:bmi/resuseableCards.dart';
 import 'package:flutter/material.dart';
@@ -157,17 +158,23 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                           iconbtn(icon: Icons.add,onPress: () {
-                             setState(() {
-                               weight++;
-                             });
-                           },),
-                           iconbtn(icon: Icons.remove,onPress: () {
-                             setState(() {
-                               weight--;
-                             });
-                           },),
-                          //  IconButton(onPressed: (){}, icon: Icon(Icons.remove)),
+                            iconbtn(
+                              icon: Icons.add,
+                              onPress: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
+                            iconbtn(
+                              icon: Icons.remove,
+                              onPress: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
+                            //  IconButton(onPressed: (){}, icon: Icon(Icons.remove)),
                           ],
                         )
                       ],
@@ -177,7 +184,7 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: mycontainer(
                     color: activeCardColor,
-                     cardChild: Column(
+                    cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -191,17 +198,23 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                           iconbtn(icon: Icons.add,onPress: () {
-                             setState(() {
-                               age++;
-                             });
-                           },),
-                           iconbtn(icon: Icons.remove,onPress: () {
-                             setState(() {
-                               age--;
-                             });
-                           },),
-                          //  IconButton(onPressed: (){}, icon: Icon(Icons.remove)),
+                            iconbtn(
+                              icon: Icons.add,
+                              onPress: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                            iconbtn(
+                              icon: Icons.remove,
+                              onPress: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                            //  IconButton(onPressed: (){}, icon: Icon(Icons.remove)),
                           ],
                         )
                       ],
@@ -210,11 +223,22 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             )),
-            Container(
-              color: BottomNavigationBarColor,
-              margin: EdgeInsets.only(top: 10),
-              width: double.infinity,
-              height: BottomNavigationBarHeight,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Resultpage(),));
+              },
+              child: Container(
+                child: Center(
+                    child: Text(
+                  'CALCULATE',
+                  style: BottomNavigationBarText,
+                ),),
+                color: BottomNavigationBarColor,
+                margin: EdgeInsets.only(top: 10),
+                padding: EdgeInsets.only(bottom: 10),
+                width: double.infinity,
+                height: BottomNavigationBarHeight,
+              ),
             )
           ],
         ));
